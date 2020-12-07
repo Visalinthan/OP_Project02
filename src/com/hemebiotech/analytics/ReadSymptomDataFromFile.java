@@ -4,10 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Simple brute force implementation
@@ -67,7 +64,8 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 				myMap.put(symptom,1);
 			}
 		}
-		return myMap;
+		TreeMap mapTri = new TreeMap(myMap);
+		return mapTri;
 	}
 
 	/**
@@ -80,8 +78,8 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 		FileWriter writer = new FileWriter ("result.out");
 
 		for (Map.Entry<String, Integer> entry : myMap.entrySet()) {
-			writer.write(entry.getKey() +'='+ entry.getValue() + "\n");
-			System.out.println(entry.getKey() +'='+ entry.getValue());
+			writer.write(entry.getKey() +':'+ entry.getValue() + "\n");
+			System.out.println(entry.getKey() +':'+ entry.getValue());
 		}
 		writer.close();
 	}
